@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TacgiaEditDlg" widgetVar="TacgiaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTacgiaTitle}">
+            <h:form id="TacgiaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tacgiaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTacgiaLabel_maTG}" for="maTG" />
+                        <p:inputText id="maTG" value="#{tacgiaController.selected.maTG}" title="#{bundle.EditTacgiaTitle_maTG}" required="true" requiredMessage="#{bundle.EditTacgiaRequiredMessage_maTG}"/>
+                        <p:outputLabel value="#{bundle.EditTacgiaLabel_tenTG}" for="tenTG" />
+                        <p:inputText id="tenTG" value="#{tacgiaController.selected.tenTG}" title="#{bundle.EditTacgiaTitle_tenTG}" />
+                        <p:outputLabel value="#{bundle.EditTacgiaLabel_diaChi}" for="diaChi" />
+                        <p:inputText id="diaChi" value="#{tacgiaController.selected.diaChi}" title="#{bundle.EditTacgiaTitle_diaChi}" />
+                        <p:outputLabel value="#{bundle.EditTacgiaLabel_sdt}" for="sdt" />
+                        <p:inputText id="sdt" value="#{tacgiaController.selected.sdt}" title="#{bundle.EditTacgiaTitle_sdt}" />
+                        <p:outputLabel value="#{bundle.EditTacgiaLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{tacgiaController.selected.email}" title="#{bundle.EditTacgiaTitle_email}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tacgiaController.update}" value="#{bundle.Save}" update="display,:TacgiaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TacgiaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TacgiaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

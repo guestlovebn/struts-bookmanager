@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TacgiaCreateDlg" widgetVar="TacgiaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateTacgiaTitle}">
+            <h:form id="TacgiaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{tacgiaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateTacgiaLabel_maTG}" for="maTG" />
+                        <p:inputText id="maTG" value="#{tacgiaController.selected.maTG}" title="#{bundle.CreateTacgiaTitle_maTG}" required="true" requiredMessage="#{bundle.CreateTacgiaRequiredMessage_maTG}"/>
+                        <p:outputLabel value="#{bundle.CreateTacgiaLabel_tenTG}" for="tenTG" />
+                        <p:inputText id="tenTG" value="#{tacgiaController.selected.tenTG}" title="#{bundle.CreateTacgiaTitle_tenTG}" />
+                        <p:outputLabel value="#{bundle.CreateTacgiaLabel_diaChi}" for="diaChi" />
+                        <p:inputText id="diaChi" value="#{tacgiaController.selected.diaChi}" title="#{bundle.CreateTacgiaTitle_diaChi}" />
+                        <p:outputLabel value="#{bundle.CreateTacgiaLabel_sdt}" for="sdt" />
+                        <p:inputText id="sdt" value="#{tacgiaController.selected.sdt}" title="#{bundle.CreateTacgiaTitle_sdt}" />
+                        <p:outputLabel value="#{bundle.CreateTacgiaLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{tacgiaController.selected.email}" title="#{bundle.CreateTacgiaTitle_email}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{tacgiaController.create}" value="#{bundle.Save}" update="display,:TacgiaListForm:datalist,:growl" oncomplete="handleSubmit(args,'TacgiaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TacgiaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

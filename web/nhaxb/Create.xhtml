@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="NhaxbCreateDlg" widgetVar="NhaxbCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateNhaxbTitle}">
+            <h:form id="NhaxbCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{nhaxbController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateNhaxbLabel_maNXB}" for="maNXB" />
+                        <p:inputText id="maNXB" value="#{nhaxbController.selected.maNXB}" title="#{bundle.CreateNhaxbTitle_maNXB}" required="true" requiredMessage="#{bundle.CreateNhaxbRequiredMessage_maNXB}"/>
+                        <p:outputLabel value="#{bundle.CreateNhaxbLabel_tenNXB}" for="tenNXB" />
+                        <p:inputText id="tenNXB" value="#{nhaxbController.selected.tenNXB}" title="#{bundle.CreateNhaxbTitle_tenNXB}" />
+                        <p:outputLabel value="#{bundle.CreateNhaxbLabel_diaChi}" for="diaChi" />
+                        <p:inputText id="diaChi" value="#{nhaxbController.selected.diaChi}" title="#{bundle.CreateNhaxbTitle_diaChi}" />
+                        <p:outputLabel value="#{bundle.CreateNhaxbLabel_sdt}" for="sdt" />
+                        <p:inputText id="sdt" value="#{nhaxbController.selected.sdt}" title="#{bundle.CreateNhaxbTitle_sdt}" />
+                        <p:outputLabel value="#{bundle.CreateNhaxbLabel_email}" for="email" />
+                        <p:inputText id="email" value="#{nhaxbController.selected.email}" title="#{bundle.CreateNhaxbTitle_email}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{nhaxbController.create}" value="#{bundle.Save}" update="display,:NhaxbListForm:datalist,:growl" oncomplete="handleSubmit(args,'NhaxbCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="NhaxbCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

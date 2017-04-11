@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LoaisachEditDlg" widgetVar="LoaisachEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditLoaisachTitle}">
+            <h:form id="LoaisachEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{loaisachController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditLoaisachLabel_maLoai}" for="maLoai" />
+                        <p:inputText id="maLoai" value="#{loaisachController.selected.maLoai}" title="#{bundle.EditLoaisachTitle_maLoai}" required="true" requiredMessage="#{bundle.EditLoaisachRequiredMessage_maLoai}"/>
+                        <p:outputLabel value="#{bundle.EditLoaisachLabel_loaiSach}" for="loaiSach" />
+                        <p:inputText id="loaiSach" value="#{loaisachController.selected.loaiSach}" title="#{bundle.EditLoaisachTitle_loaiSach}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{loaisachController.update}" value="#{bundle.Save}" update="display,:LoaisachListForm:datalist,:growl" oncomplete="handleSubmit(args, 'LoaisachEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="LoaisachEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
