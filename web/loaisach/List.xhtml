@@ -10,7 +10,7 @@
 
 
         <ui:define name="title">
-            <h:outputText value="#{bundle.ListLoaisachTitle}"></h:outputText>
+            <h:outputText value="Danh sách loại sách"></h:outputText>
         </ui:define>
 
         <ui:define name="body">
@@ -29,21 +29,21 @@
 
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListLoaisachTitle_maLoai}"/>
+                                <h:outputText value="Mã loại sách"/>
                             </f:facet>
                             <h:outputText value="#{item.maLoai}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListLoaisachTitle_loaiSach}"/>
+                                <h:outputText value="Loại sách"/>
                             </f:facet>
                             <h:outputText value="#{item.loaiSach}"/>
                         </p:column>
                         <f:facet name="footer">
-                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{loaisachController.prepareCreate}" update=":LoaisachCreateForm" oncomplete="PF('LoaisachCreateDialog').show()"/>
-                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":LoaisachViewForm" oncomplete="PF('LoaisachViewDialog').show()" disabled="#{empty loaisachController.selected}"/>
-                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":LoaisachEditForm" oncomplete="PF('LoaisachEditDialog').show()" disabled="#{empty loaisachController.selected}"/>
-                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{loaisachController.destroy}" update=":growl,datalist" disabled="#{empty loaisachController.selected}"/>
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="Thêm mới" actionListener="#{loaisachController.prepareCreate}" update=":LoaisachCreateForm" oncomplete="PF('LoaisachCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="Xem chi tiết" update=":LoaisachViewForm" oncomplete="PF('LoaisachViewDialog').show()" disabled="#{empty loaisachController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="Sửa" update=":LoaisachEditForm" oncomplete="PF('LoaisachEditDialog').show()" disabled="#{empty loaisachController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="Xoá" actionListener="#{loaisachController.destroy}" update=":growl,datalist" disabled="#{empty loaisachController.selected}"/>
                         </f:facet>
                     </p:dataTable>
                 </p:panel>
